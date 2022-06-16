@@ -6,16 +6,16 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>
+          Zapatos magicos para vestir
+        </h1>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="http://anitalafont.000webhostapp.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Anita Lafont
         </a>
       </header>
     </div>
