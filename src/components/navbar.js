@@ -1,4 +1,5 @@
-import './navbar.css';
+import './Navbar.css';
+import CartWidget from './CartWidget';
 
 function Navbar() {
   return (
@@ -34,6 +35,7 @@ function Navbar() {
            </li>
         </ul>
       </div>
+      <CartWidget />
     </div>
   </nav>
 
