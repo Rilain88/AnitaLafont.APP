@@ -12,6 +12,7 @@ function Navbar() {
              <span class="navbar-toggler-icon"></span>
           </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="">Home</a>
@@ -24,20 +25,19 @@ function Navbar() {
           </li>
 
           <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-              Nosotros
-               </a>
-             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 <a class="dropdown-item" href="">Quien Soy</a>
-                 <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="">Contacto</a>
-              </div>
-           </li>
-        </ul>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Nosotros...
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item first-dropdown" href="#nosotros">¿Quien soy?</a></li>
+                <li><a class="dropdown-item second-dropdown" href="#contacto">Contacto</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <CartWidget />
       </div>
-      <CartWidget />
-    </div>
-  </nav>
+    </nav>
 
   );
 }

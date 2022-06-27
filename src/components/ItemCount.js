@@ -1,32 +1,65 @@
 import './ItemCount.css'
-import { useState } from "react";
+import Swal from 'sweetalert2'
+import { useState, useEffect } from "react";
 
-function ItemCount (){
+function ItemCount ({stock}){
     const [num, setNum] = useState(0);
 
+
+    useEffect (() => {
+          if (num == stock - 2 ){
+                Swal.fire('Quedan pocos productos')
+            }
+    }, [num])
+
     const sumar = () => {
+        if(num < stock) {
         setNum(num + 1)
+        }
+        else {
+            Swal.fire({
+                title: 'Atención',
+                text: 'No hay mas stock Disponible',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+              })    
+        }
     }
 
     const resta = () => {
+        if(num>0){
         setNum(num - 1)
+    }
+    }
+
+    const reiniciar = () => {
+        setNum(0)
     }
 
     return (
         <>
-           <p>{num}</p>
+        <p>{num}</p>
            <button onClick={sumar}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="35" fill="rgb(165, 98, 59)" class="bi bi-bug" viewBox="0 0 16 16">
-                 <path d="M4.355.522a.5.5 0 0 1 .623.333l.291.956A4.979 4.979 0 0 1 8 1c1.007 0 1.946.298 2.731.811l.29-.956a.5.5 0 1 1 .957.29l-.41 1.352A4.985 4.985 0 0 1 13 6h.5a.5.5 0 0 0 .5-.5V5a.5.5 0 0 1 1 0v.5A1.5 1.5 0 0 1 13.5 7H13v1h1.5a.5.5 0 0 1 0 1H13v1h.5a1.5 1.5 0 0 1 1.5 1.5v.5a.5.5 0 1 1-1 0v-.5a.5.5 0 0 0-.5-.5H13a5 5 0 0 1-10 0h-.5a.5.5 0 0 0-.5.5v.5a.5.5 0 1 1-1 0v-.5A1.5 1.5 0 0 1 2.5 10H3V9H1.5a.5.5 0 0 1 0-1H3V7h-.5A1.5 1.5 0 0 1 1 5.5V5a.5.5 0 0 1 1 0v.5a.5.5 0 0 0 .5.5H3c0-1.364.547-2.601 1.432-3.503l-.41-1.352a.5.5 0 0 1 .333-.623zM4 7v4a4 4 0 0 0 3.5 3.97V7H4zm4.5 0v7.97A4 4 0 0 0 12 11V7H8.5zM12 6a3.989 3.989 0 0 0-1.334-2.982A3.983 3.983 0 0 0 8 2a3.983 3.983 0 0 0-2.667 1.018A3.989 3.989 0 0 0 4 6h8z"/>
-              </svg>
+           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="rgb(165, 98, 59)" class="bi bi-bag-plus" viewBox="0 0 16 16">
+               <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z"/>
+               <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+            </svg>
             </button>
             
            <button onClick={resta}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="35" fill="rgb(175, 98, 59)" class="bi bi-bug-fill" viewBox="0 0 16 16">
-                 <path d="M4.978.855a.5.5 0 1 0-.956.29l.41 1.352A4.985 4.985 0 0 0 3 6h10a4.985 4.985 0 0 0-1.432-3.503l.41-1.352a.5.5 0 1 0-.956-.29l-.291.956A4.978 4.978 0 0 0 8 1a4.979 4.979 0 0 0-2.731.811l-.29-.956z"/>
-                 <path d="M13 6v1H8.5v8.975A5 5 0 0 0 13 11h.5a.5.5 0 0 1 .5.5v.5a.5.5 0 1 0 1 0v-.5a1.5 1.5 0 0 0-1.5-1.5H13V9h1.5a.5.5 0 0 0 0-1H13V7h.5A1.5 1.5 0 0 0 15 5.5V5a.5.5 0 0 0-1 0v.5a.5.5 0 0 1-.5.5H13zm-5.5 9.975V7H3V6h-.5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 0-1 0v.5A1.5 1.5 0 0 0 2.5 7H3v1H1.5a.5.5 0 0 0 0 1H3v1h-.5A1.5 1.5 0 0 0 1 11.5v.5a.5.5 0 1 0 1 0v-.5a.5.5 0 0 1 .5-.5H3a5 5 0 0 0 4.5 4.975z"/>
-              </svg>
+           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="rgb(165, 98, 59)" class="bi bi-bag-dash" viewBox="0 0 16 16">
+               <path fill-rule="evenodd" d="M5.5 10a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
+               <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+            </svg>
             </button>
+
+            <button onClick={reiniciar}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="rgb(165, 98, 59)" class="bi bi-bag" viewBox="0 0 16 16">
+               <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+            </svg>
+            </button>
+
+            <button> {num > 0 ? `Agregar al Carrito` : `Elige Cantidad...   ` }</button>
         </>
     )
 }
